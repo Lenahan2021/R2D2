@@ -42,3 +42,15 @@ Sweet! Once we have both scripts set up, we need to connect the breadboard to ea
 The final result of each pi should look like this.
 
 ![Capture1](https://user-images.githubusercontent.com/91961435/207184624-571efe13-3ea4-428c-9e42-286d8df8b284.PNG)
+
+## Using the scripts
+
+Once having both connections running, you should get a prompt on your server that reads “Choose 1 or 2”. Depending on which number is inputted, it will use that command to turn on the LED either on the server or the client using 1 and 2 respectively. 
+
+This is very important when being able to distinguish which command will perform what action and on which area of the robot the action will be performed. The two commands could be used for all the lights and turning of the head, while 1 commands could be used to control the body movement, with each Pi handling the different sections. We can also make our own commands and see which command matches up with the specific functions that will control the LEDs or the servos.
+
+## Breakdown
+
+Let's start with the bodyCommands.py file.
+
+As of right now, I have specified that the server pi will be in charge of the body, so the bodyCommands.py file hosts all of the necessary functions to handle the body (open and close motors, turn on LEDs etc). As you progress more on this project, you will have to build out your own functions based on the objective. 
