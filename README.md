@@ -36,3 +36,9 @@ If you have made it this far, great! You are one step closer to running the proj
 	python3 UDP_CLIENT.py (on client pi)
   
 Sweet! Once we have both scripts set up, we need to connect the breadboard to each pi. Using the GPIO cable that came with your kit, connect the female pins to the male GPIO pins on your Pi while connecting the other end to the breadboard. For our demonstration, we are going to setup the LED circuit like so:
+
+![Capture](https://user-images.githubusercontent.com/91961435/207184545-3d31c1ac-a7ff-4850-abe4-250935b2ea99.PNG)
+
+The final result of each pi should look like this.
+
+![Capture1](https://user-images.githubusercontent.com/91961435/207184624-571efe13-3ea4-428c-9e42-286d8df8b284.PNG)
