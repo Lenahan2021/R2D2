@@ -29,3 +29,10 @@ Once completed, connect the two Pis together using the LAN cable and do a quick 
 - Look for the eth0 connection and make sure the “inet” section is the same ip you have set on the pi.
 
 If you have made it this far, great! You are one step closer to running the project. Running the python files is easy. Choose which pi you would like your server and client to run the respective file through the terminal. Make sure to run the server file first.
+
+## To run the files
+  
+  python3 UDP_SERVER.py (on server pi)
+	python3 UDP_CLIENT.py (on client pi)
+  
+Sweet! Once we have both scripts set up, we need to connect the breadboard to each pi. Using the GPIO cable that came with your kit, connect the female pins to the male GPIO pins on your Pi while connecting the other end to the breadboard. For our demonstration, we are going to setup the LED circuit like so:
