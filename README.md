@@ -1,10 +1,10 @@
 # R2D2 Server Client Data Transfer
 
-##Description
+## Description
 
 A small, but efficient way to transmit commands between two Raspberry Pi’s in order to run commands on the respective Pi.
 
-##Prerequisites
+## Prerequisites
 
 I highly recommend you have some Electronics 101 acknowledgement before moving on to the rest of the project. This guide will get you started. (insert Bander’s Electronics 101 link)
 
@@ -14,7 +14,7 @@ Python 3
 
 Ethernet cable
 
-##Installation
+## Installation
 
 In order to get this project downloaded, clone this repo on both Raspberry pis using 
 “git clone (link)”  picture of command in shell
