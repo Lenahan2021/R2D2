@@ -25,7 +25,7 @@ We are going to need some prior setup before getting this project running. Befor
 
 Once completed, connect the two Pis together using the LAN cable and do a quick check that the IPs you set are being used.
 
--Open up the terminal and run the command “ifconfig”
--Look for the eth0 connection and make sure the “inet” section is the same ip you have set on the pi.
+- Open up the terminal and run the command “ifconfig”
+- Look for the eth0 connection and make sure the “inet” section is the same ip you have set on the pi.
 
 If you have made it this far, great! You are one step closer to running the project. Running the python files is easy. Choose which pi you would like your server and client to run the respective file through the terminal. Make sure to run the server file first.
