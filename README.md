@@ -51,7 +51,7 @@ This is very important when being able to distinguish which command will perform
 
 ## Breakdown
 
-### Let's start with the bodyCommands.py file.
+### bodyCommands.py file.
 
 As of right now, I have specified that the server pi will be in charge of the body, so the bodyCommands.py file hosts all of the necessary functions to handle the body (open and close motors, turn on LEDs etc). As you progress more on this project, you will have to build out your own functions based on the objective. 
 
@@ -75,4 +75,64 @@ As you can see, we have an example led method that turns on and off an LED, whic
 
 The commands method is where you call your other built out methods. It takes in a data variable, and that variable is the string you will pass in from the user input. If the data matches up with a specific command you choose, then call the specific method. 
 
+![image](https://user-images.githubusercontent.com/91961435/207186717-b2924120-ff83-4610-8185-87be9b029624.png)
 
+Above is a hypothetical example of adding more commands. This is where you will do all your editing when adding or removing commands and running them. 
+
+### UDP_SERVER.py
+
+![image](https://user-images.githubusercontent.com/91961435/207186843-f89ab1fd-a126-4033-9a4a-0feb7005c98c.png)
+
+Let’s import our neccessary modules.
+
+![image](https://user-images.githubusercontent.com/91961435/207186879-e974a5fb-6f98-40f3-9dc3-fa6afb21f02f.png)
+
+Let's start with our defined variables. We are gathering the IP and port number we are going to be using when identifying our server. The IP is being pulled from the current IP of the ethernet connection. Our port is just a random open port to allow communication.
+
+![image](https://user-images.githubusercontent.com/91961435/207188389-a32de1f2-f827-4a4b-948b-0e53537b8720.png)
+
+Let’s now create our socket. A socket is just an endpoint that receives data after being passed. Here, we are creating a UDP (much simpler, and is faster. Note: if the packet is lost over the transmission, it will not send again.) socket that is binded to our defined IP and Port.
+This is how the other Pi will be able to communicate with us.
+
+![image](https://user-images.githubusercontent.com/91961435/207188513-2cda0950-446c-4fbf-a94c-5055eca2ac0c.png)
+
+Lets create a while loop to make sure our program never ends.
+
+![image](https://user-images.githubusercontent.com/91961435/207188677-c593b382-66b0-4862-9f43-5112c942d1e5.png)
+
+For testing purposes, we were going with manual input as it was easier, but when the controller is connected, this will all be handled automatically. As stated earlier, we chose strings that started with 1 to remain on the Server PI while strings that start with 2 to be sent to the other Pi. If the string starts with 2, send the data as a Byte String in the ascii format to the Address of ‘192.168.100.101’(this is the static IP of our Client Pi) on the specified port. (You can use any identifier you want, but 1 and 2 was just the simplest)
+
+![image](https://user-images.githubusercontent.com/91961435/207188788-35765058-00b5-4709-9d9d-d601a6bf1af5.png)
+
+Continuing on, we then set up a callback function to receive information of whether or not the task has been received from the other Pi. We create a new empty string called data. While that string is empty, we have not heard a response back from the other pi. We are actively listening and waiting for a response back. Once received, we decode the data, as it is a byte string(a sequence of bytes that can be decoded back to english), and print out the message and where it came from.
+
+![image](https://user-images.githubusercontent.com/91961435/207188899-88fa06dd-7008-4367-bd55-da3781b33927.png)
+
+
+If the string did start with a 1, we use the commands on the server to execute what we want our Pi to do.
+
+### UDP_Client.py
+
+![image](https://user-images.githubusercontent.com/91961435/207189254-09c4dc1e-11cf-47ab-a984-3a343312d842.png)
+
+Import the required packages, we will use these later.
+
+![image](https://user-images.githubusercontent.com/91961435/207189359-a919c086-e8e7-4521-8c03-4eeebe22b022.png)
+
+Lets start with defining our variables. Our target IP is going to be our server Pi to which we will be relaying the feedback callbacks to. Our port is the same port that the server uses, and our IP is the IP we pull from our Pi.
+
+![image](https://user-images.githubusercontent.com/91961435/207189509-4db965a1-2133-48bd-ae38-67c2657b0192.png)
+
+We then create a socket that uses UDP once more. We bind our IP and Port to our socket, or our endpoint. This allows the server to be able to contact our Client, think of it like an address in order to receive mail packages.
+
+![image](https://user-images.githubusercontent.com/91961435/207189628-0ba4ef31-8ba6-4be9-b13c-c3888e104ac3.png)
+
+Lets then create a loop. This loop will listen for incoming data that is being sent our way. Once we receive the data, we will then decode it. (As it is being sent from the server as a byte string.) Then we print our the message we recieve. 
+
+![image](https://user-images.githubusercontent.com/91961435/207189750-b43e1d74-ef5c-4da7-be92-a37c6bf74b94.png)
+
+Create a conditional inside the loop. This checks to see if the first index of the command string is a “2”. If it is, then run the command we received. Once the command is finished, we then create a String callback variable and send it back to the server. Once the response is received, the server knows that function is completed.
+
+![image](https://user-images.githubusercontent.com/91961435/207189909-fe43d99c-3039-43e4-ba8f-8f2ef9098117.png)
+
+If the command does not start with “2”, then we know that command is not either “1” or “2” so just discard it.
