@@ -51,6 +51,28 @@ This is very important when being able to distinguish which command will perform
 
 ## Breakdown
 
-Let's start with the bodyCommands.py file.
+### Let's start with the bodyCommands.py file.
 
 As of right now, I have specified that the server pi will be in charge of the body, so the bodyCommands.py file hosts all of the necessary functions to handle the body (open and close motors, turn on LEDs etc). As you progress more on this project, you will have to build out your own functions based on the objective. 
+
+![1](https://user-images.githubusercontent.com/91961435/207185678-0d5b2b8b-e5cd-49e9-9849-f01a2dfdc819.PNG)
+
+Let's start by importing our two modules we need. The GPIO module is our most important one as it will allow us to communicate with our Pi board. 
+
+![2](https://user-images.githubusercontent.com/91961435/207185895-144ab7b2-3d0a-4dd9-85a1-9d3960ee1e40.PNG)
+
+Then we assign our ledPin to pin 11 on the GPIO. This specifies which pin we will give voltage to.
+
+![3](https://user-images.githubusercontent.com/91961435/207186077-dc8a5e00-38c3-4503-9c59-c71544f96d33.PNG)
+
+Next is our cleanup function. This will be called after each function using the GPIO as it will get rid of any unnecessary pins that we are not using right now.  It is just good practice to use.
+
+![4](https://user-images.githubusercontent.com/91961435/207186285-2557a01e-ad71-4c06-8e83-f5f55f09a5bf.PNG)
+
+As you can see, we have an example led method that turns on and off an LED, which essentially just supplies power to the circuit, then turns off the power to the pin. This should be pretty self explanatory if you followed the electronics 101 tutorial.
+
+![5](https://user-images.githubusercontent.com/91961435/207186382-709c4a68-1d31-4d92-a523-0b199fad34fb.PNG)
+
+The commands method is where you call your other built out methods. It takes in a data variable, and that variable is the string you will pass in from the user input. If the data matches up with a specific command you choose, then call the specific method. 
+
+
