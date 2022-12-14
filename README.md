@@ -17,7 +17,7 @@ Ethernet cable
 ## Installation
 
 In order to get this project downloaded, clone this repo on both Raspberry pis using 
-“git clone (link)”  picture of command in shell
+“git clone (link)”
 
 We are going to need some prior setup before getting this project running. Before we get started, we are going to need to make sure that each Raspberry Pi has a static IP. A static IP is an IP address that doesn’t change after the system is rebooted. It is hard set into the network and the computer will always be able to be identified by this set IP address. In order to set the static IP of each Raspberry Pi, please follow this [guide](https://www.tomshardware.com/how-to/static-ip-raspberry-pi), 
 
